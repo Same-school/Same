@@ -82,39 +82,39 @@ export default function HomePost(){
         padding-bottom: 20px;
     `;
 
-    async function fnGetPost(userId: string | null)
-    {
-        if(!userId) return [];
-
-        try{
-            const reponse = await fetch(`https://sameapi-e8dmf9f6a7h2gkbh.switzerlandnorth-01.azurewebsites.net/api/post/getallbyuser/${userId}`, {
+    async function fnGetRecentPosts() {
+        try {
+            // Utilisation du nouveau lien sans paramètre d'ID
+            const reponse = await fetch(`https://sameapi-e8dmf9f6a7h2gkbh.francecentral-01.azurewebsites.net/api/post/getRecentPost`, {
                 method: "GET",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8",
                 },
-            })
+            });
+
+            if (!reponse.ok) {
+                throw new Error(`Erreur HTTP: ${reponse.status}`);
+            }
+
             const data = await reponse.json();
-            console.log(data);
-            
+            console.log("Posts récents récupérés :", data);
             return data;
 
-        } catch(error) {
-            console.log(error);
+        } catch (error) {
+            console.error("Erreur lors de la récupération des posts :", error);
+            return [];
         }
     }
 
     useEffect(() => {
-        const userId = localStorage.getItem("userId");
-
         async function load() {
-            const posts = await fnGetPost(userId);
-            console.log("📌 Résultat API :", posts);
+            const posts = await fnGetRecentPosts();
+            console.log("📌 Résultat API (Recent Posts) :", posts);
             setPosts(posts);
         }
 
         load();
     }, []);
-  
     
 
     return(
