@@ -25,12 +25,19 @@ export default function HomePost(){
     const postCss = css`
     display: flex;
     flex-direction: column;
-    width: 420px;                   /* réduit un peu */
+    width: 100%;                    /* Mobile first: 100% */
+    max-width: 420px;               /* Limite sur desktop */
     margin: 20px auto;              /* CENTRE la carte */
     border-radius: 20px;
     background: ${theme.glass.bgPost};
     box-shadow: ${theme.shadow.md};
     overflow: hidden;
+    padding: 0 10px;                /* Petit padding sur mobile */
+
+    @media (min-width: 768px) {
+      width: 420px;
+      padding: 0;
+    }
     `;
 
     const headerCss = css`
@@ -62,7 +69,7 @@ export default function HomePost(){
         display: flex;
         align-items: center;
         padding: 12px 20px;
-        gap: 12px;
+        width: 20%;
     `
 
     const text = css`
@@ -77,9 +84,14 @@ export default function HomePost(){
 
       const postButton = css`
         position: fixed;
-        right: 40px;
-        bottom: 40px;
+        right: 20px;
+        bottom: 20px;
         padding-bottom: 20px;
+
+        @media (min-width: 768px) {
+          right: 40px;
+          bottom: 40px;
+        }
     `;
 
     async function fnGetRecentPosts() {
