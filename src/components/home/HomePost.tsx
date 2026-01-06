@@ -1,13 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import SameAccountLogo from '../../assets/img_home_page/same-account-logo.svg';
-import ImgExPost from '../../assets/img_home_page/img-ex-post.png';
 import { theme } from '../../styles/theme';
 import SameLikeLogo from '../../assets/img_home_page/same-like-logo.png';
 import SameCommentLogo from '../../assets/img_home_page/same-comment-logo.png'
 import SameSendLogo from '../../assets/img_home_page/same-send-logo.png'
 import SamePostLogo from '../../assets/img_home_page/same-post-logo.png'
 import { useState, useEffect } from "react";
+import HomePostCreate from './HomePostCreate';
 
 interface Post {
     id: number;
@@ -21,6 +21,7 @@ interface Post {
 export default function HomePost(){
 
     const [posts, setPosts] = useState<Post[]>([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const postCss = css`
     display: flex;
@@ -38,6 +39,8 @@ export default function HomePost(){
       width: 420px;
       padding: 0;
     }
+    
+    font-family: 'Tangkiwood', sans-serif;
     `;
 
     const headerCss = css`
@@ -76,23 +79,80 @@ export default function HomePost(){
         display: flex;
         text-align: centre;
         padding: 10px;
+        font-family: 'SF Pro', sans-serif;
     `
 
     const backColor = css`
         box-shadow: ${theme.glass.focusShadow};
     `
 
-      const postButton = css`
-        position: fixed;
-        right: 20px;
-        bottom: 20px;
-        padding-bottom: 20px;
 
-        @media (min-width: 768px) {
-          right: 40px;
-          bottom: 40px;
+    const postButton = css`
+        position: fixed; /* Fixe le bouton par rapport à la fenêtre */
+        right: 30px;     /* Distance du bord droit */
+        bottom: 30px;    /* Distance du bord bas */
+        cursor: pointer;
+        z-index: 100;    /* S'assure qu'il passe devant les posts */
+        transition: transform 0.2s ease;
+
+        /* Effet au survol pour le rendre interactif */
+        &:hover {
+            transform: scale(1.1);
         }
-    `;
+
+        img {
+            width: 180px; /* Ajuste la taille selon ton logo "Post" */
+            height: auto;
+        }
+
+        @media (max-width: 768px) {
+            right: 20px;
+            bottom: 20px;
+            img {
+                width: 100px;
+            }
+        }
+    `
+
+    const deleteBtn = css`
+        white-space: nowrap;    /* Empêche le texte de passer à la ligne */
+        cursor: pointer;
+        background: none;
+        border: none;
+        color: white;
+    `
+
+    const overlayCss = css`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(65, 65, 65, 0.7);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+`
+
+    const closeCrossCss = css`
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: 'SF Pro', sans-serif;
+    transition: transform 0.2s ease;
+
+    &:hover {
+        transform: scale(1.2);
+    }
+`
+
 
     async function fnGetRecentPosts() {
         try {
@@ -118,6 +178,33 @@ export default function HomePost(){
         }
     }
 
+    async function fnDeletePost(postId: number) 
+    {
+        try{
+            const reponse = await fetch(`https://sameapi-e8dmf9f6a7h2gkbh.francecentral-01.azurewebsites.net/api/post/delete/${postId}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8",
+                },
+            });
+
+            if (!reponse.ok) {
+                throw new Error(`Erreur HTTP: ${reponse.status}`);
+            }
+
+            const text = await reponse.text();
+            const data = text ? JSON.parse(text) : {success: true};
+            console.log("Post supprimé avec succès :", data);
+
+            setPosts((prev) => prev.filter(p => p.id !== postId));
+
+            return data;
+        } catch (error) {
+            console.error("Erreur lors de la suppression du post :", error);
+            return null;
+        }
+    }
+
     useEffect(() => {
         async function load() {
             const posts = await fnGetRecentPosts();
@@ -131,33 +218,48 @@ export default function HomePost(){
 
     return(
         <>
-           {posts.map((post) => (
+            {/* Liste des posts */}
+            {posts.map((post) => (
                 <main key={post.id} css={postCss}>
                     <section css={headerCss}>
                         <img src={SameAccountLogo} alt="Account" css={avatarCss} />
                         <h1>{post.title}</h1>
                     </section>
 
-                    <section>
-                        <img src={ImgExPost} alt="Post" />
-                    </section>
+                    <article css={text}>
+                        {post.content}
+                    </article>
 
                     <section css={imgLogo}>
                         <img src={SameLikeLogo} alt="Like" />
                         <img src={SameCommentLogo} alt="Comment" />
                         <img src={SameSendLogo} alt="Send" />
+                        <button 
+                            onClick={() => fnDeletePost(post.id)}
+                            css={deleteBtn}
+                        >
+                            Supprimer 🗑️
+                        </button>
                     </section>
-
-                    <article css={text}>
-                        {post.content}
-                    </article>
                 </main>
             ))}
 
-            <article css={postButton}>
+            <article css={postButton} onClick={() => setIsModalOpen(true)} style={{ cursor: 'pointer' }}>
                 <img src={SamePostLogo} alt="Create Post" />
             </article>
 
+            {isModalOpen && (
+                <div css={overlayCss} onClick={() => setIsModalOpen(false)}>
+                    
+                    <button css={closeCrossCss} onClick={() => setIsModalOpen(false)}>
+                        ✕
+                    </button>
+
+                    <div onClick={(e) => e.stopPropagation()} style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+                        <HomePostCreate />
+                    </div>
+                </div>
+            )}
         </>
     );
 }

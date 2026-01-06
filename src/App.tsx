@@ -7,7 +7,7 @@ function App() {
     return (
         <>
             <ThemeProvider theme={theme}>
-                <Global styles={globalStyle} />
+                <Global styles={globalStyle}/>
                 <AppRoutes />
             </ThemeProvider>
         </>

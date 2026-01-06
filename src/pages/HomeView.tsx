@@ -7,6 +7,7 @@ import HeaderHomePage from '../components/home/HeaderHomePage'
 import HomePost from '../components/home/HomePost'
 import TagList from '../components/home/TagList'
 import { theme } from '../styles/theme'
+import HomePostCreate from '../components/home/HomePostCreate'
 
 export default function HomeView() {
   const [showTags, setShowTags] = useState(false)
@@ -152,6 +153,7 @@ export default function HomeView() {
           <div css={contentColumnCss}>
             <HomePage />
             <HomePost />
+            {/* <HomePostCreate /> */}
             <Link to="/signup">Link to Signup Page</Link>
           </div>
 
