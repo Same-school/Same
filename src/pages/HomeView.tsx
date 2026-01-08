@@ -7,7 +7,6 @@ import HeaderHomePage from '../components/home/HeaderHomePage'
 import HomePost from '../components/home/HomePost'
 import TagList from '../components/home/TagList'
 import { theme } from '../styles/theme'
-import HomePostCreate from '../components/home/HomePostCreate'
 import HomeCreatePostButton from '../components/home/HomeCreatePostButton'
 
 export default function HomeView() {
