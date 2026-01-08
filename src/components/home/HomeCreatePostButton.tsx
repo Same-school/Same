@@ -27,9 +27,9 @@ const postButton = css`
 
     @media (max-width: 768px) {
       right: 15px;
-      top: 90px;  
+      top: 149px;  
       img {
-        width: 80px;
+        width: 120px;
       }
     }
   `;
