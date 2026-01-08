@@ -5,7 +5,10 @@ export const theme = {
         border: 'rgba(255, 255, 255, 0.20)',
         borderHover: 'rgba(255, 255, 255, 0.5)',
         backdrop: 'blur(10px)',
+        bgHeader: '#a5abbc',
         focusShadow: '0 0 0 3px rgba(255, 255, 255, 0.1)',
+        bgPost: '#414755',
+        bgHomePage: '#e8e8e8',
     },
     colors: {
         textWhite: '#fffafa',
@@ -48,10 +51,10 @@ export const theme = {
         '2xl': '3rem',
     },
     input: {
-        width: 'min(80vw, 500px)',
+        width: 'min(70vw, 380px)',
         gap: '2vw',
-        widthHalf: 'min(calc((min(80vw, 500px) - 2vw) / 2), 250px)',
-        widthThird: 'min(calc((min(80vw, 500px) - (2vw * 2)) / 3), 160px)',
+        widthHalf: 'min(calc((min(70vw, 380px) - 2vw) / 2), 180px)',
+        widthThird: 'min(calc((min(70vw, 380px) - (2vw * 2)) / 3), 120px)',
         height: '45px',
     },
     borderRadius: {

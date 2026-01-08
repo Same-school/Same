@@ -1,13 +1,17 @@
-import {Card} from "../components/forms/signup/SignupCard.tsx";
-import LoginForm from "../components/forms/login/LoginForm.tsx"
+import styled from '@emotion/styled'
+import LoginCard from '../components/forms/login/LoginCard'
+
+const ViewContainer = styled.div`
+    width: 100%;
+    max-width: 500px;
+    padding: ${({ theme }) => theme.spacing.md};
+    box-sizing: border-box;
+`
 
 export default function LoginView() {
     return (
-        <>
-            <Card>
-                <h1>Login</h1>
-                <LoginForm />
-            </Card>
-        </>
+        <ViewContainer>
+            <LoginCard />
+        </ViewContainer>
     )
 }

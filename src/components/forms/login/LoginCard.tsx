@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from '@emotion/styled'
-import SignupForm from './SignupForm'
+import LoginForm from './LoginForm'
 
 export const Card = styled.div`
     display: flex;
@@ -13,13 +13,6 @@ export const Card = styled.div`
     padding: ${({ theme }) => theme.spacing.lg};
     box-shadow: ${({ theme }) => theme.shadow.lg};
     width: 100%;
-    max-width: 480px;
-    box-sizing: border-box;
-    & input, & button {
-        width: 100%;
-        max-width: 420px;
-        box-sizing: border-box;
-    }
 `
 
 const Title = styled.h1`
@@ -40,14 +33,14 @@ const StyledLink = styled(Link)`
     }
 `
 
-export default function SignupCard() {
+export default function LoginCard() {
     return (
         <Card>
-            <Title>Sign Up</Title>
-            <SignupForm />
+            <Title>Login</Title>
+            <LoginForm />
             <FooterText>
-                Already have an account?
-                <StyledLink to="/login"> <b>Login</b></StyledLink>
+                Don't have an account?
+                <StyledLink to="/signup"> <b>Sign Up</b></StyledLink>
             </FooterText>
         </Card>
     )
