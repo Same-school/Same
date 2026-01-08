@@ -1,69 +1,23 @@
-# React + TypeScript + Vite
+![Same Logo](same-logo.png)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Same
 
-Currently, two official plugins are available:
+## Description :
+Same est une plateforme de discussion destinée aux élèves et étudiants à Genève. Le projet a pour but de créer un espace simple, moderne et sécurisé pour permettre aux jeunes de discuter, poser des questions et s’entraider sur des sujets scolaires, personnels ou sociaux.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Objectif du projet :
+Le but de Same est de proposer une alternative claire et utile aux réseaux sociaux classiques, en se concentrant uniquement sur des échanges entre étudiants dans un cadre sain, organisé et adapté au monde scolaire.
 
-## Expanding the ESLint configuration
+L'idée vient de l'addiction constante aux réseaux sociaux des élèves, que se soit durant les pauses où même parfois en classe.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Nous souhiatons revenir à l'idée de base des réseaux sociaux, le but principal étant de connecter les gens entre eux.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Fonctionnalités principales :
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+	•	Création de compte utilisateur
+	•	Connexion sécurisée
+	•	Publication de posts
+	•	Discussions par thème
+	•	Interface simple et intuitive
+	•	API backend sécurisée
+	•	Base de données relationnelle
