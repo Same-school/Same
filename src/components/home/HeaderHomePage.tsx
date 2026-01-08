@@ -24,8 +24,8 @@ export default function HeaderHomePage(){
 
     const imgCss = css`
         display: block;
-        widht: 150px;
-        max-widht:100%;
+        width: 150px;
+        max-width:100%;
         height: 120px;
         margin: 10px auto 0;
         margin-left: 12px;

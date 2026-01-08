@@ -49,6 +49,8 @@ export const globalStyle = (theme: Theme) => css`
         font-size: ${theme.fontSize.sm};
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
         backdrop-filter: blur(4px);
         overflow-y: auto;
     }
