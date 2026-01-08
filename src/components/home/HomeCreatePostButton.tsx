@@ -2,7 +2,7 @@
 import { css } from '@emotion/react';
 import SamePostLogo from '../../assets/img_home_page/same-primary-logo2.png'
 import HomePostCreate from './HomePostCreate';
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function HomeCreatePostButton() 
 {

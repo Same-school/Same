@@ -1,6 +1,6 @@
-import {FormEvent, useState} from 'react'
+import { type FormEvent, useState } from 'react'
 import styled from '@emotion/styled'
-import {useNavigate, useNavigation} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 // import { useForm } from 'react-hook-form'
 import Username from "./Username.tsx"
 import EmailField from "./EmailField.tsx"
@@ -8,8 +8,7 @@ import FirstNameField from "./FirstNameField.tsx"
 import LastNameField from "./LastNameField.tsx"
 import BirthdateField from "./BirthdateField.tsx"
 import PasswordFields from "./PasswordFields.tsx"
-import {PostUser, type PostUserProps} from '../../../api/User.ts'
-import {redirect} from "react-router-dom";
+import { PostUser, type PostUserProps } from '../../../api/User.ts'
 
 const StyledForm = styled.form`
     width: 100%;

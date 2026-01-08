@@ -62,10 +62,6 @@ const postCss = css`
         object-fit: cover;
     `;
 
-    const imgCss = css`
-        width: 70px;
-    `
-
 const imgLogo = css`
     background: ${theme.glass.focusShadow};
     display: flex;
@@ -97,10 +93,6 @@ const imgLogo = css`
     overflow-wrap: break-word;
     word-break: break-word;
     white-space: normal;
-    `
-
-    const backColor = css`
-        box-shadow: ${theme.glass.focusShadow};
     `
 
     const deleteBtn = css`

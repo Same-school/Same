@@ -29,7 +29,7 @@ export default function TagList({ onClose }: TagListProps){
         gap: 20px;
         backdrop-filter: blur(12px);
         width: 260px;
-        height: calc(100dvh - 140px);
+        height: calc(100dvh - 160px);
         overflow-y: auto;
         z-index: 500;
         scrollbar-width: none;

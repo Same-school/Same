@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react'
+import { type FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from '@emotion/styled'
 import Username from "../login/UsernameField.tsx"
@@ -105,8 +105,9 @@ export default function LoginForm() {
             <Username value={username} onChange={setUsername} isLogin={true}/>
             <PasswordFields
                 passwordValue={password}
+                confirmValue=""
                 onPasswordChange={setPassword}
-                isLogin={true}
+                onConfirmChange={() => {}}
             />
             {error && <ErrorMessage>{error}</ErrorMessage>}
             <SubmitButton type="submit" disabled={isLoading || !username || !password}>
