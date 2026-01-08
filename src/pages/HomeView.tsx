@@ -14,15 +14,21 @@ export default function HomeView() {
 
   const mainContainerCss = css`
     width: 100%;
-    min-height: calc(100dvh - 80px);
+    height: 100dvh;
     display: flex;
     flex-direction: column;
     background-color: ${theme.glass.bgHomePage};
-    padding-top: 2rem;
-    overflow: auto;
+    padding-top: 140px;
+    padding-left: 280px;
+    overflow: hidden;
+
+    @media (max-width: 1023px) {
+      padding-left: 0;
+      padding-top: 140px;
+    }
 
     @media (max-width: 768px) {
-      padding: 1rem;
+      padding: 140px 1rem 0;
     }
   `
 
@@ -126,6 +132,14 @@ export default function HomeView() {
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
+    overflow-y: auto;
+    height: calc(100dvh - 160px);
+    padding-bottom: 2rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   `
 
   return (

@@ -17,19 +17,30 @@ export default function TagList({ onClose }: TagListProps){
     `
 
     const cardCss = css`
+        position: fixed;
+        top: 140px;
+        left: 0;
         background: white;
         box-shadow: ${theme.shadow.md};
-        border-radius: 20px;
+        border-radius: 0 20px 20px 0;
         padding: 16px 24px;
         display: flex;
         flex-direction: column;
         gap: 20px;
         backdrop-filter: blur(12px);
-        width: 100%;
-        max-width: 260px;
-        margin: 0 auto;
+        width: 260px;
+        height: calc(100dvh - 140px);
+        overflow-y: auto;
+        z-index: 500;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        &::-webkit-scrollbar {
+          display: none;
+        }
         
         @media (max-width: 1023px) {
+          position: static;
+          width: 100%;
           max-width: none;
           border-radius: 0;
           height: 100%;

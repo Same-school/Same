@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import SamePostLogo from '../../assets/img_home_page/same-post-logo.png'
+import SamePostLogo from '../../assets/img_home_page/same-primary-logo2.png'
 import HomePostCreate from './HomePostCreate';
 import { useState, useEffect } from "react";
 
@@ -11,9 +11,9 @@ export default function HomeCreatePostButton()
 const postButton = css`
     position: fixed;  
     right: 30px;     
-    top: 925px;       
+    bottom: 30px;       
     cursor: pointer;
-    z-index: 100;   
+    z-index: 1000;   
     transition: transform 0.2s ease;
 
     &:hover {
@@ -27,7 +27,7 @@ const postButton = css`
 
     @media (max-width: 768px) {
       right: 15px;
-      top: 149px;  
+      bottom: 15px;  
       img {
         width: 120px;
       }

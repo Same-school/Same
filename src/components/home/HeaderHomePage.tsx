@@ -24,8 +24,6 @@ export default function HeaderHomePage(){
 
     const imgCss = css`
         display: block;
-        width: 150px;
-        max-width:100%;
         height: 120px;
         margin: 10px auto 0;
         margin-left: 12px;
@@ -37,6 +35,11 @@ export default function HeaderHomePage(){
     height: 50px;`
 
     const headerSection = css`
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
