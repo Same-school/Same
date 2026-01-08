@@ -1,13 +1,8 @@
-import {Card} from "../components/forms/signup/SignupCard.tsx";
-import LoginForm from "../components/forms/login/LoginForm.tsx"
+import styled from '@emotion/styled'
+import LoginCard from '../components/forms/login/LoginCard'
 
 export default function LoginView() {
     return (
-        <>
-            <Card>
-                <h1>Login</h1>
-                <LoginForm />
-            </Card>
-        </>
+        <LoginCard />
     )
 }
