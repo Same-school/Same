@@ -8,7 +8,7 @@ function App() {
     return (
         <AuthProvider>
             <ThemeProvider theme={theme}>
-                <Global styles={globalStyle} />
+                <Global styles={globalStyle}/>
                 <AppRoutes />
             </ThemeProvider>
         </AuthProvider>

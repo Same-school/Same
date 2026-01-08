@@ -1,34 +1,7 @@
 import { css } from '@emotion/react'
 import type {Theme} from './theme'
-import MyFontFileSFProBold from '../assets/font/SF-Pro-Display-Bold.otf'
-import MyFontFileSFPro from '../assets/font/SFPRODISPLAYREGULAR.OTF'
 
-export const globalStyle = (theme: Theme) => css`
-    @font-face {
-        font-family:'Tangkiwood';
-        src: url(${MyFontFileSFProBold}) format('truetype');
-        font-weight: normal;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'SF Pro';
-        src: url(${MyFontFileSFPro}) format('opentype'); /* Format opentype pour .OTF */
-        font-weight: normal;
-        font-style: normal;
-    }
-
-    
-
-    h1, h2, h3 {
-        font-family: 'Tangkiwood', sans-serif;
-        margin: 0;
-        /* Ajoute ces lignes : */
-        font-size: 2.5rem;   /* Ajuste ce chiffre (2.5 est assez grand) */
-        font-weight: bold;   /* Si tu veux qu'il soit plus épais */
-        line-height: 1.2;    /* Pour éviter que les lignes se chevauchent */
-    }
-
+export const homePageStyle = (theme: Theme) => css`
     *, *::before, *::after {
         box-sizing: border-box;
         margin: 0;
@@ -47,8 +20,6 @@ export const globalStyle = (theme: Theme) => css`
         color: ${theme.colors.textWhite};
         background-color: ${theme.colors.bgPrimary};
         font-size: ${theme.fontSize.sm};
-        display: flex;
-        flex-direction: column;
         backdrop-filter: blur(4px);
         overflow-y: auto;
     }

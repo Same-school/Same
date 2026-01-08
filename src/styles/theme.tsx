@@ -5,7 +5,10 @@ export const theme = {
         border: 'rgba(255, 255, 255, 0.20)',
         borderHover: 'rgba(255, 255, 255, 0.5)',
         backdrop: 'blur(10px)',
+        bgHeader: '#a5abbc',
         focusShadow: '0 0 0 3px rgba(255, 255, 255, 0.1)',
+        bgPost: '#414755',
+        bgHomePage: '#e8e8e8',
     },
     colors: {
         textWhite: '#fffafa',

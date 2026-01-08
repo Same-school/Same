@@ -13,6 +13,13 @@ export const Card = styled.div`
     padding: ${({ theme }) => theme.spacing.lg};
     box-shadow: ${({ theme }) => theme.shadow.lg};
     width: 100%;
+    max-width: 480px;
+    box-sizing: border-box;
+    & input, & button {
+        width: 100%;
+        max-width: 420px;
+        box-sizing: border-box;
+    }
 `
 
 const Title = styled.h1`
