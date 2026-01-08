@@ -1,5 +1,6 @@
 import {FormEvent, useState} from 'react'
 import styled from '@emotion/styled'
+import {useNavigate, useNavigation} from 'react-router-dom'
 // import { useForm } from 'react-hook-form'
 import Username from "./Username.tsx"
 import EmailField from "./EmailField.tsx"
@@ -8,6 +9,7 @@ import LastNameField from "./LastNameField.tsx"
 import BirthdateField from "./BirthdateField.tsx"
 import PasswordFields from "./PasswordFields.tsx"
 import {PostUser, type PostUserProps} from '../../../api/User.ts'
+import {redirect} from "react-router-dom";
 
 const StyledForm = styled.form`
     width: 100%;
@@ -46,6 +48,7 @@ const SubmitButton = styled.button`
 export default function SignupForm() {
     // const form = useForm()
     // const { handleSubmit } = form
+    const navigate = useNavigate();
 
     const [username, setUsername] = useState('')
     const [firstName, setFirstName] = useState('')
@@ -58,22 +61,20 @@ export default function SignupForm() {
     const HandleSubmit = async (e:FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const User:PostUserProps = {
-            id: 0,
-            isAdmin: false,
-            birthday: birthdate.toString(),
+            birthdate: `${birthdate.year}-${birthdate.month.padStart(2, '0')}-${birthdate.day.padStart(2, '0')}`,
             firstName: firstName,
             lastName: lastName,
             pseudo: username,
             email: email,
             password: password,
-            numberFollowers: 0,
-            createAt: "2025-11-12T20:38:12.278Z",
             genderId: 0,
             schoolId: 0,
             professionId: 0
         }
         try {
-            await PostUser(User)
+            await PostUser(User);
+            alert("You account has been successfully created");
+            navigate('/login');
         }
         catch (e) {
             console.error(e)
