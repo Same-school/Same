@@ -1,12 +1,12 @@
 import { css } from '@emotion/react'
 import type {Theme} from './theme'
-import MyFontFileTangkiwood from '../assets/font/TANTangkiwood-Display.ttf'
+import MyFontFileSFProBold from '../assets/font/SF-Pro-Display-Bold.otf'
 import MyFontFileSFPro from '../assets/font/SFPRODISPLAYREGULAR.OTF'
 
 export const globalStyle = (theme: Theme) => css`
     @font-face {
         font-family:'Tangkiwood';
-        src: url(${MyFontFileTangkiwood}) format('truetype');
+        src: url(${MyFontFileSFProBold}) format('truetype');
         font-weight: normal;
         font-style: normal;
     }

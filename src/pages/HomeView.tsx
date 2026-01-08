@@ -8,6 +8,7 @@ import HomePost from '../components/home/HomePost'
 import TagList from '../components/home/TagList'
 import { theme } from '../styles/theme'
 import HomePostCreate from '../components/home/HomePostCreate'
+import HomeCreatePostButton from '../components/home/HomeCreatePostButton'
 
 export default function HomeView() {
   const [showTags, setShowTags] = useState(false)
@@ -73,10 +74,9 @@ export default function HomeView() {
   `
 
   const tagColumnCss = css`
-    /* Mobile: affichage conditionnel */
     display: ${showTags ? 'block' : 'none'};
     position: fixed;
-    left: 0;
+    left: 0px;
     top: 80px;
     width: 100%;
     max-width: 300px;
@@ -95,7 +95,6 @@ export default function HomeView() {
       }
     }
 
-    /* Desktop: toujours visible */
     @media (min-width: 1024px) {
       display: block;
       position: static;
@@ -144,20 +143,16 @@ export default function HomeView() {
         <div css={overlayMobileCss} onClick={() => setShowTags(false)} />
 
         <div css={gridLayoutCss}>
-          {/* Colonne gauche : tags */}
           <div css={tagColumnCss}>
             <TagList onClose={() => setShowTags(false)} />
           </div>
-
-          {/* Colonne centrale : contenu principal */}
+          
           <div css={contentColumnCss}>
             <HomePage />
             <HomePost />
-            {/* <HomePostCreate /> */}
             <Link to="/signup">Link to Signup Page</Link>
+            <HomeCreatePostButton />
           </div>
-
-          {/* Colonne droite (vide pour l'instant, pour futur bouton Post) */}
           <div />
         </div>
       </div>

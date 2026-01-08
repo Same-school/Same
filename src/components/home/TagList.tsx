@@ -73,7 +73,7 @@ export default function TagList({ onClose }: TagListProps){
 
     const tagButtonCss = (bg: string) => css`
         padding: 8px 24px;
-        border-radius: 999px;      /* forme pilule */
+        border-radius: 999px;    
         border: none;
         background-color: ${bg};
         color: #ffffff;
